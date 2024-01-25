@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 
@@ -12,14 +13,11 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function login(Request $request){
-        $data = $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+    public function login(UserRequest $request){
+        $credentials = $request->only('username', 'password');
         $remember = $request->has('remember');
 
-        if(auth()->attempt($data, $remember)){
+        if(auth()->attempt($credentials, $remember)){
             $request->session()->regenerate();
             return redirect()->intended(route('welcome'))->with('success', 'Successfully Login');
         }

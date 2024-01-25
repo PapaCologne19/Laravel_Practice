@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
-    public function showRegister(){
+    public function showRegister()
+    {
         return view('register');
     }
 
-    public function register(Request $request){
-        $data = $request->validate([
-            'username' => 'required',
-            'password' => 'required|min:8',
-            'name' => 'required',
-            'email' => 'required|email',
+    public function register(RegisterRequest $request)
+    {
+        $request['password'] = Hash::make($request['password']);
+        User::create([
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
         ]);
-
-        $data['password'] = Hash::make($data['password']);
-        User::create($data);
         return redirect(route('showLogin'))->with('success', 'Registration Success.');
     }
 }

@@ -13,12 +13,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         * {
             font-family: 'Inter', sans-serif;
         }
+
+        .contain {
+            display: grid;
+            grid-template-columns: 0fr 0fr;
+            grid-template-rows: 0fr 0fr;
+            gap: 5px;
+            margin: 0 auto;
+        }
     </style>
-    
+
     <title>List of Cats</title>
 </head>
 
@@ -31,9 +40,12 @@
             </div>
         @endif
         <div class="container mt-5">
-            <button type="button" class="btn btn-dark" onclick="location.href = '/welcome'">Back</button>
-            <button type="button" class="btn btn-primary" onclick="location.href = '{{ route('cat.add') }}'">Add
-                Cat</button>
+            <button type="button" class="btn btn-dark" onclick="location.href = '/welcome'" title="Back"><i
+                    class="bi bi-arrow-90deg-left"></i></button>
+            <button type="button" class="btn btn-primary" onclick="location.href = '{{ route('cat.add') }}'"
+                title="Add Cat">
+                <i class="bi bi-plus-lg"></i>
+            </button>
         </div>
         <div class="container table-responsive">
             <table class="table table-sm table-bordered mt-3">
@@ -62,18 +74,69 @@
                             <td>
                                 <div class="contain">
                                     <div class="column">
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#viewModal-{{ $cat->id }}" title="View">
+                                            <i class="bi bi-eye text-white"></i>
+                                        </button>
+                                    </div>
+                                    <div class="column">
                                         <button class="btn btn-success btn-sm" type="button"
-                                            onclick="location.href = '{{ route('cat.edit', ['cat' => $cat]) }}'">Edit</button>
+                                            onclick="location.href = '{{ route('cat.edit', ['cat' => $cat]) }}'"
+                                            title="Edit">
+                                            <i class="bi bi-gear"></i>
+                                        </button>
                                     </div>
                                     <div class="column">
                                         <form action="{{ route('cat.delete', ['cat' => $cat]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                            <button class="btn btn-danger btn-sm" type="submit" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
                             </td>
+
+                            {{-- Modal for Viewing Information --}}
+                            <div class="modal fade" id="viewModal-{{ $cat->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="col-md-12">
+                                                    <h6 class="fs-6"><strong>Cat Name: </strong>{{ $cat->cat_name }}
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <h6 class="fs-6"><strong>Age: </strong>{{ $cat->age }}</h6>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <h6 class="fs-6"><strong>Gender: </strong>{{ $cat->gender }}
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <h6 class="fs-6"><strong>Color: </strong>{{ $cat->color }}</h6>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <h6 class="fs-6"><strong>Breed: </strong>{{ $cat->breed }}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- End of Modal for Viewing Information --}}
+                            
                         </tr>
                     @endforeach
                 </tbody>

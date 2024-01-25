@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cat;
 use Illuminate\Http\Request;
+use App\Http\Requests\CatRequest;
 
 class CatController extends Controller
 {
@@ -18,17 +19,15 @@ class CatController extends Controller
         return view('cat.add');
     }
 
-    public function store(Request $request)
+    public function store(CatRequest $request)
     {
-        $data = $request->validate([
-            'cat_name' => 'required',
-            'age' => 'required',
-            'gender' => 'required',
-            'color' => 'required',
-            'breed' => 'required',
+        Cat::create([
+            'cat_name' => $request->input('cat_name'),
+            'age' => $request->input('age'),
+            'gender' => $request->input('gender'),
+            'color' => $request->input('color'),
+            'breed' => $request->input('breed')
         ]);
-
-        Cat::create($data);
         return redirect(route('cat.index'))->with('success', 'Cat Added Successfully');
     }
 
@@ -37,17 +36,15 @@ class CatController extends Controller
         return view('cat.edit', ['cat' => $cat]);
     }
 
-    public function update(Request $request, Cat $cat)
+    public function update(CatRequest $request, Cat $cat)
     {
-        $data = $request->validate([
-            'cat_name' => 'required',
-            'age' => 'required',
-            'gender' => 'required',
-            'color' => 'required',
-            'breed' => 'required',
+        $cat->update([
+            'cat_name' => $request->input('cat_name'),
+            'age' => $request->input('age'),
+            'gender' => $request->input('gender'),
+            'color' => $request->input('color'),
+            'breed' => $request->input('breed')
         ]);
-
-        $cat->update($data);
         return redirect(route('cat.index'))->with('success', 'Cat Updated Successfully');
     }
 

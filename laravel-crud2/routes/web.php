@@ -3,6 +3,8 @@
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatController;
+use App\Http\Controllers\DogController;
+use App\Http\Controllers\BirdController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
 
@@ -52,5 +54,28 @@ Route::middleware('auth')->group(
             });
         });
 
+        // Route for Dog
+        Route::controller(DogController::class)->group(function (){
+            Route::name('dog.')->group(function(){
+                Route::get('/dog', 'index')->name('index');
+                Route::get('/dog/add', 'add')->name('add');
+                Route::post('/dog/store', 'store')->name('store');
+                Route::get('/dog/{dog}/edit', 'edit')->name('edit');
+                Route::put('/dog/{dog}/update', 'update')->name('update');
+                Route::delete('/dog/{dog}/delete', 'delete')->name('delete');
+            });
+        });
+
+        // Route for Bird
+        Route::controller(BirdController::class)->group(function (){
+            Route::name('bird.')->group(function(){
+                Route::get('/bird', 'index')->name('index');
+                Route::get('/bird/create', 'create')->name('create');
+                Route::post('/bird/store', 'store')->name('store');
+                Route::get('/bird/edit/{bird}', 'edit')->name('edit');
+                Route::put('/bird/update/{bird}', 'update')->name('update');
+                Route::delete('/bird/destroy/{bird}', 'destroy')->name('destroy');
+            });
+        });
     }
 );

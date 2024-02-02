@@ -2,6 +2,7 @@
 
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApeController;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\DogController;
 use App\Http\Controllers\BirdController;
@@ -75,6 +76,17 @@ Route::middleware('auth')->group(
                 Route::get('/bird/edit/{bird}', 'edit')->name('edit');
                 Route::put('/bird/update/{bird}', 'update')->name('update');
                 Route::delete('/bird/destroy/{bird}', 'destroy')->name('destroy');
+            });
+        });
+
+        Route::controller(ApeController::class)->group(function() {
+            Route::name('ape.')->group(function(){
+                Route::get('/ape', 'index')->name('index');
+                Route::get('/ape/create', 'create')->name('create');
+                Route::post('/ape/store', 'store')->name('store');
+                Route::get('/ape/edit/{ape}', 'edit')->name('edit');
+                Route::put('/ape/update/{ape}', 'update')->name('update');
+                Route::delete('/ape/destroy/{ape}', 'destroy')->name('destroy');
             });
         });
     }

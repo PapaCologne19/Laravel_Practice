@@ -31,15 +31,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
 
-        $user = auth()->user();
-        $request->session()->regenerate();
+        if (auth()->attempt($data)) {
+            $user = auth()->user();
+            $request->session()->regenerate();
 
-        if ($user->isAdmin()) {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            if (User::isAdmin($user->user_type)) {
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } else {
+                return redirect()->intended(RouteServiceProvider::MAIN);
+            }
         }
-        return redirect()->intended(RouteServiceProvider::MAIN);
+
+        return back()->withErrors([
+            'username' => 'The username or password is incorrect',
+        ]);
     }
 
 

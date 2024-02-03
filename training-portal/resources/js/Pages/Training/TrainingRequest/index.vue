@@ -15,12 +15,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <Head title="Lists of Trainings" />
+  <Head title="Training Requests" />
 
   <AuthenticatedLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Lists of Trainings
+        Training Requests
       </h2>
     </template>
 
@@ -32,13 +32,7 @@ onMounted(() => {
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-6 text-gray-900">
-            <div class="container px-5">
-              <Link
-                :href="route('add_list_of_training')"
-                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                >Add</Link
-              >
-            </div>
+            
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
               <table
                 class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400"
@@ -50,11 +44,13 @@ onMounted(() => {
                     <th class="px-6 py-3">Venue</th>
                     <th class="px-6 py-3">Facilitator</th>
                     <th class="px-6 py-3">Division</th>
+                    <th class="px-6 py-3">Request Status</th>
+                    <th class="px-6 py-3">Training Status</th>
                     <th class="px-6 py-3">Date Added</th>
                     <th class="px-6 py-3">Action</th>
                   </tr>
                 </thead>
-                <tbody class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+                <!-- <tbody class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
                   <tr class="border-b" v-for="list in lists" :key="list.id">
                     <td class="px-6 py-4">
                       {{ list.training_title }}
@@ -80,7 +76,7 @@ onMounted(() => {
                       >
                     </td>
                   </tr>
-                </tbody>
+                </tbody> -->
               </table>
             </div>
           </div>

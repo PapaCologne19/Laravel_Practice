@@ -32,9 +32,11 @@ class User extends Authenticatable
 
     ];
 
-    public function isAdmin(){
-        return $this->user_type === 'ADMIN';
+    // User Model
+    public static function isAdmin($userType) {
+        return $userType === 'admin';
     }
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -56,5 +58,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    
+
 }

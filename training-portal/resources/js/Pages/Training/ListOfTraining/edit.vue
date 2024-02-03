@@ -3,28 +3,29 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { Head, useForm, Link } from "@inertiajs/vue3";
+import { ref, defineProps } from "vue";
 
 const props = defineProps({
-  list: Object,
+  list_of_training: Object,
 });
 
 const form = useForm({
-  training_title: props.list,
-  datetime: "",
-  venue: "",
-  facilitator: "",
-  division: "",
+  training_title: props.list_of_training.training_title,
+  datetime: props.list_of_training.datetime,
+  venue: props.list_of_training.venue,
+  facilitator: props.list_of_training.facilitator,
+  division: props.list_of_training.division,
 });
 
-const submit = () => {
-  form.post(route("store_list_of_training"));
+const update = () => {
+  form.put(route('update_list_of_training', [props.list_of_training.id]));
 };
 </script>
 
 <template>
-  <Head title="Dashboard" />
+  <Head title="Update Training" />
 
   <AuthenticatedLayout>
     <template #header>
@@ -45,7 +46,7 @@ const submit = () => {
               >
             </div>
             <div class="container mt-9">
-              <form @submit.prevent="submit">
+              <form @submit.prevent="update">
                 <div>
                   <InputLabel for="training_title" value="Training Title" />
                   <TextInput

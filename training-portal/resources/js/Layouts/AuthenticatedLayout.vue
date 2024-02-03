@@ -30,7 +30,7 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Home
                                 </NavLink>
                                 <NavLink :href="route('training-request')" :active="route().current('training-request')">
                                     Training Request
@@ -119,7 +119,7 @@ const showingNavigationDropdown = ref(false);
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            Home
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('training-request')" :active="route().current('training-request')">
                             Training Request

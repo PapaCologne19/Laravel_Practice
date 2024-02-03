@@ -20,7 +20,7 @@ const submit = () => {
 </script>
 
 <template>
-  <Head title="Dashboard" />
+  <Head title="Add Training" />
 
   <AuthenticatedLayout>
     <template #header>

@@ -71,8 +71,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Route for User Training Request
     Route::controller(UserTrainingRequestController::class)->group(function () {
-        Route::get('/index', 'index')
-            ->name('name');
+        Route::get('/home', 'index')
+            ->name('show_user_training_list');
+        Route::get('/add/{add}', 'create')
+            ->name('add_user_training_list');
+        Route::post('/store', 'store')
+            ->name('store_user_training_list');
     });
 });
 

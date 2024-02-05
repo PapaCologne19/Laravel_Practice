@@ -11,16 +11,16 @@ class ListOfTrainingController extends Controller
 {
     public function show_list_of_training()
     {
-        // $lists = ListOfTraining::all();
-
         return Inertia::render('Training/ListOfTraining/index', [
             'lists' => fn() => ListOfTraining::all()
         ]);
     }
 
-    public function add_list_of_training(){
+    public function add_list_of_training()
+    {
         return Inertia::render('Training/ListOfTraining/create');
     }
+
     public function store_list_of_training(ListOfTrainingRequest $request)
     {
         ListOfTraining::create([

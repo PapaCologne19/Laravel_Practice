@@ -10,11 +10,11 @@ class TrainingRequest extends Model
     use HasFactory;
     protected $table = "training_request";
     protected $fillable = [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
+        'user_id',
+        'training_title',
+        'datetime',
+        'venue',
+        'facilitator',
+        'division',
     ];
 }

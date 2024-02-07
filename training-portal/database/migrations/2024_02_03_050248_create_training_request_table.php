@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('venue');
             $table->string('facilitator');
             $table->string('division');
-            $table->tinyInteger('is_approve')->default(0); // If the status is 0, it's pending. If the status is 1, it's Approved. If the status is 2, it's Rejected
-            $table->tinyInteger('is_done')->default(0); // If the status is 0, it's pending. If the status is 1, it is Done.
+            $table->tinyInteger('is_approve')->default('Pending'); 
+            $table->tinyInteger('is_done')->default('Pending'); 
             $table->timestamps();
         });
     }

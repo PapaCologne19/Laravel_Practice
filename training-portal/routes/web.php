@@ -23,16 +23,11 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
     ->name('login');
-
-
-
-
 Route::middleware(['auth', 'verified'])->group(function () {
     // Route for Homepage / Dashboard
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
-    })
-        ->name('dashboard');
+    })->name('dashboard');
 
     // Route for List of Controller
     Route::controller(ListOfTrainingController::class)->group(function () {

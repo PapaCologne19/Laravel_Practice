@@ -62,23 +62,72 @@ const props = defineProps({
                     <td class="px-6 py-4">{{ request.venue }}</td>
                     <td class="px-6 py-4">{{ request.facilitator }}</td>
                     <td class="px-6 py-4">{{ request.division }}</td>
-                    <td class="px-6 py-4">{{ request.is_approve }}</td>
-                    <td class="px-6 py-4">{{ request.is_done }}</td>
+                    <td class="px-6 py-4">
+                      <span
+                        :class="{
+                          'bg-yellow-500': request.is_approve === 'Pending',
+                          'bg-green-500': request.is_approve === 'Approved',
+                          'bg-red-500': request.is_approve === 'Rejected',
+                        }"
+                        class="inline-block px-2 py-1 text-xs font-semibold text-white rounded-full"
+                      >
+                        {{ request.is_approve }}
+                      </span>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        :class="{
+                          'bg-yellow-500': request.is_done === 'Pending',
+                          'bg-green-500': request.is_done === 'Done',
+                        }"
+                        class="inline-block px-2 py-1 text-xs font-semibold text-white rounded-full"
+                      >
+                        {{ request.is_done }}
+                      </span>
+                    </td>
                     <td class="px-6 py-4">{{ request.created_at }}</td>
                     <td class="px-6 py-4">
-                      <Link
-                        :href="`/request_of_training/${request.id}/edit`"
-                        class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-2 mb-2"
-                        >Accept</Link
+                      <div
+                        :class="{
+                          hidden:
+                            request.is_approve === 'Approved' ||
+                            request.is_approve === 'Rejected',
+                        }"
                       >
-                      <Link
-                        :href="`/request_of_training/${request.id}/delete`"
-                        class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150 font-medium rounded-lg text-sm px-3 py-2 mt-3 text-center me-2"
-                        method="delete"
-                        as="button"
-                        type="button"
-                        >Reject</Link
+                        <Link
+                          :href="`/training_request/${request.id}/accept`"
+                          class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-2 mb-2"
+                          >Accept</Link
+                        >
+                      </div>
+                      <div
+                        :class="{
+                          hidden:
+                            request.is_approve === 'Pending' ||
+                            request.is_approve === 'Rejected' ||
+                            request.is_done === 'Done',
+                        }"
                       >
+                        <Link
+                          :href="`/training_request/${request.id}/done`"
+                          class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-2 mb-2"
+                          >Set_as_Done</Link
+                        >
+                      </div>
+                      <div
+                        :class="{
+                          hidden:
+                            request.is_approve === 'Approved' ||
+                            request.is_approve === 'Rejected',
+                        }"
+                        class="mt-6"
+                      >
+                        <Link
+                          :href="`/training_request/${request.id}/reject`"
+                          class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-2 mb-2"
+                          >Reject</Link
+                        >
+                      </div>
                     </td>
                   </tr>
                 </tbody>

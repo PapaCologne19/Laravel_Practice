@@ -66,6 +66,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // Route for Displaying Training Request
         Route::get('/training_request', 'index')
             ->name('training-request');
+        Route::get('/training_request/{training_request}/accept', 'accept')
+            ->name('accept');
+        Route::get('/training_request/{training_request}/reject', 'reject')
+            ->name('reject');
+        Route::get('/training_request/{training_request}/done', 'done')
+            ->name('done');
     });
 
 

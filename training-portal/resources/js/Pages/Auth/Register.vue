@@ -32,7 +32,7 @@ const submit = () => {
     <Head title="Register" />
 
     <form @submit.prevent="submit">
-      <div>
+      <div class="mt-4">
         <InputLabel for="username" value="Username" />
 
         <TextInput
@@ -78,7 +78,7 @@ const submit = () => {
         <InputError class="mt-2" :message="form.errors.password_confirmation" />
       </div>
 
-      <div>
+      <div class="mt-4">
         <InputLabel for="firstname" value="Firstname" />
 
         <TextInput
@@ -94,7 +94,7 @@ const submit = () => {
         <InputError class="mt-2" :message="form.errors.firstname" />
       </div>
 
-      <div>
+      <div class="mt-4">
         <InputLabel for="middlename" value="Middlename" />
 
         <TextInput
@@ -110,7 +110,7 @@ const submit = () => {
         <InputError class="mt-2" :message="form.errors.middlename" />
       </div>
 
-      <div>
+      <div class="mt-4">
         <InputLabel for="lastname" value="Lastname" />
 
         <TextInput
@@ -162,7 +162,7 @@ const submit = () => {
         </select>
       </div>
 
-      <div>
+      <div class="mt-4">
         <InputLabel for="id_number" value="ID Number" />
 
         <TextInput
@@ -178,7 +178,7 @@ const submit = () => {
         <InputError class="mt-2" :message="form.errors.id_number" />
       </div>
 
-      <div>
+      <div class="mt-4">
         <InputLabel for="principal" value="Principal" />
 
         <TextInput
@@ -194,7 +194,7 @@ const submit = () => {
         <InputError class="mt-2" :message="form.errors.principal" />
       </div>
 
-      <div>
+      <div class="mt-4">
         <InputLabel for="supervisor" value="Supervisor" />
 
         <TextInput
@@ -209,8 +209,6 @@ const submit = () => {
 
         <InputError class="mt-2" :message="form.errors.supervisor" />
       </div>
-
-
 
       <div class="flex items-center justify-end mt-4">
         <Link

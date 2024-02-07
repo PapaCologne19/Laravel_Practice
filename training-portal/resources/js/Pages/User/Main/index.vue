@@ -11,8 +11,12 @@ const props = defineProps({
 <template>
   <NavBar>
     <Head title="Home" />
-    <div class="container mx-auto grid grid-flow-col auto-cols-max">
-      <Link :href="route('add_user_training_list', [list.id])" v-for="list in lists" :key="list.id">
+    <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Link
+        :href="route('add_user_training_list', [list.id])"
+        v-for="list in lists"
+        :key="list.id"
+      >
         <div
           class="max-w-sm p-9 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4 mx-2"
         >

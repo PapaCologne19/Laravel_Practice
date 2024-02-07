@@ -16,5 +16,8 @@ class TrainingRequest extends Model
         'venue',
         'facilitator',
         'division',
+        'is_approve',
+        'is_done',
     ];
+
 }

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('venue');
             $table->string('facilitator');
             $table->string('division');
-            $table->tinyInteger('is_approve')->default('Pending'); 
-            $table->tinyInteger('is_done')->default('Pending'); 
+            $table->string('is_approve')->default('Pending'); 
+            $table->string('is_done')->default('Pending'); 
             $table->timestamps();
         });
     }

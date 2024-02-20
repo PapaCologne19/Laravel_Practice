@@ -2,16 +2,44 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import SuccessButton from "@/Components/SuccessButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
+import Pagination from "@/Components/Pagination.vue";
+import { usePage } from "@inertiajs/inertia-vue3";
 import { Head, Link } from "@inertiajs/vue3";
-import { ref, onMounted, defineProps } from "vue";
+import { Inertia } from "@inertiajs/inertia";
+import { ref, onMounted, defineProps, computed } from "vue";
 
 const props = defineProps({
-  lists: Array,
+  lists: Object,
+  pagination: Object,
 });
 
-onMounted(() => {
-  console.log("Lists:", props.lists);
-});
+const data = ref(props.pagination);
+
+const previous = computed(() => props.pagination.prev_page_url !== null);
+const next = computed(() => props.pagination.next_page_url !== null);
+
+const previousPage = (event) => {
+  event.preventDefault(); // Prevent default behavior
+  if (previous.value) {
+    fetchPage(data.value.prev_page_url);
+  }
+};
+
+const nextPage = (event) => {
+  event.preventDefault(); // Prevent default behavior
+  if (next.value) {
+    fetchPage(data.value.next_page_url);
+  }
+};
+
+const fetchPage = (url) => {
+  Inertia.visit(url, {
+    onSuccess: (page) => {
+      props.lists = page.props.lists;
+      props.pagination = page.props.pagination;
+    },
+  });
+};
 </script>
 
 <template>
@@ -23,10 +51,6 @@ onMounted(() => {
         Lists of Trainings
       </h2>
     </template>
-
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-      {{ status }}
-    </div>
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -82,6 +106,24 @@ onMounted(() => {
                   </tr>
                 </tbody>
               </table>
+
+              <div class="inline-flex -space-x-px text-base h-10 m-5">
+                <div v-for="item in items" :key="item.id">{{ item.name }}</div>
+                <Link
+                  type="button"
+                  @click="previousPage"
+                  :disabled="!previous"
+                  class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  >Previous</Link
+                >
+                <Link
+                  type="button"
+                  @click="nextPage"
+                  :disabled="!next"
+                  class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  >Next</Link
+                >
+              </div>
             </div>
           </div>
         </div>

@@ -5,11 +5,20 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8b40c130e6622e4ea0d79503b071c83626c59227',
+        'reference' => '17569230bc4ba137f45c4f46d7ee42bc825abb6f',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
+        'alkhatibdev/inertia-pagination' => array(
+            'pretty_version' => '0.0.1',
+            'version' => '0.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../alkhatibdev/inertia-pagination',
+            'aliases' => array(),
+            'reference' => 'cf65aea47d9c42e10d924270fa8fd9632ce746dc',
+            'dev_requirement' => false,
+        ),
         'barryvdh/laravel-debugbar' => array(
             'pretty_version' => 'v3.9.2',
             'version' => '3.9.2.0',
@@ -412,7 +421,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8b40c130e6622e4ea0d79503b071c83626c59227',
+            'reference' => '17569230bc4ba137f45c4f46d7ee42bc825abb6f',
             'dev_requirement' => false,
         ),
         'laravel/pint' => array(

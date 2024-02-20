@@ -96,4 +96,5 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'Barryvdh\\Debugbar\\' => array($vendorDir . '/barryvdh/laravel-debugbar/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
+    'AlkhatibDev\\InertiaPagination\\' => array($vendorDir . '/alkhatibdev/inertia-pagination/src'),
 );

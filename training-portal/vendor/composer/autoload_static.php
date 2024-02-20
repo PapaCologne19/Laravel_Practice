@@ -183,6 +183,7 @@ class ComposerStaticInit96c9b9e9055e99a8c386f905218c2fd0
         'A' => 
         array (
             'App\\' => 4,
+            'AlkhatibDev\\InertiaPagination\\' => 30,
         ),
     );
 
@@ -553,9 +554,14 @@ class ComposerStaticInit96c9b9e9055e99a8c386f905218c2fd0
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
         ),
+        'AlkhatibDev\\InertiaPagination\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alkhatibdev/inertia-pagination/src',
+        ),
     );
 
     public static $classMap = array (
+        'AlkhatibDev\\InertiaPagination\\Providers\\InertiaPaginationServiceProvider' => __DIR__ . '/..' . '/alkhatibdev/inertia-pagination/src/Providers/InertiaPaginationServiceProvider.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
@@ -587,8 +593,10 @@ class ComposerStaticInit96c9b9e9055e99a8c386f905218c2fd0
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ListOfTrainingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ListOfTrainingRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
-        'App\\Http\\Requests\\TrainingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TrainingRequest.php',
-        'App\\Http\\Requests\\UserTrainingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserTrainingRequest.php',
+        'App\\Http\\Requests\\TrainingRequests' => __DIR__ . '/../..' . '/app/Http/Requests/TrainingRequests.php',
+        'App\\Mail\\MailApprovedNotification' => __DIR__ . '/../..' . '/app/Mail/MailApprovedNotification.php',
+        'App\\Mail\\MailNotification' => __DIR__ . '/../..' . '/app/Mail/MailNotification.php',
+        'App\\Mail\\MailRejectNotification' => __DIR__ . '/../..' . '/app/Mail/MailRejectNotification.php',
         'App\\Models\\ListOfTraining' => __DIR__ . '/../..' . '/app/Models/ListOfTraining.php',
         'App\\Models\\TrainingRequest' => __DIR__ . '/../..' . '/app/Models/TrainingRequest.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

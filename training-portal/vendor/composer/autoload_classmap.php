@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlkhatibDev\\InertiaPagination\\Providers\\InertiaPaginationServiceProvider' => $vendorDir . '/alkhatibdev/inertia-pagination/src/Providers/InertiaPaginationServiceProvider.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
@@ -37,8 +38,10 @@ return array(
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Http\\Requests\\ListOfTrainingRequest' => $baseDir . '/app/Http/Requests/ListOfTrainingRequest.php',
     'App\\Http\\Requests\\ProfileUpdateRequest' => $baseDir . '/app/Http/Requests/ProfileUpdateRequest.php',
-    'App\\Http\\Requests\\TrainingRequest' => $baseDir . '/app/Http/Requests/TrainingRequest.php',
-    'App\\Http\\Requests\\UserTrainingRequest' => $baseDir . '/app/Http/Requests/UserTrainingRequest.php',
+    'App\\Http\\Requests\\TrainingRequests' => $baseDir . '/app/Http/Requests/TrainingRequests.php',
+    'App\\Mail\\MailApprovedNotification' => $baseDir . '/app/Mail/MailApprovedNotification.php',
+    'App\\Mail\\MailNotification' => $baseDir . '/app/Mail/MailNotification.php',
+    'App\\Mail\\MailRejectNotification' => $baseDir . '/app/Mail/MailRejectNotification.php',
     'App\\Models\\ListOfTraining' => $baseDir . '/app/Models/ListOfTraining.php',
     'App\\Models\\TrainingRequest' => $baseDir . '/app/Models/TrainingRequest.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

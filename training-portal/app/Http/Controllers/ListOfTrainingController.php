@@ -11,8 +11,10 @@ class ListOfTrainingController extends Controller
 {
     public function show_list_of_training()
     {
+        $pagination = ListOfTraining::latest()->paginate(2);
         return Inertia::render('Training/ListOfTraining/index', [
-            'lists' => fn() => ListOfTraining::all()
+            'lists' => $pagination->items(),
+            'pagination' => $pagination
         ]);
     }
 

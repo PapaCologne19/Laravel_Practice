@@ -2,6 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import SuccessButton from "@/Components/SuccessButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
+import Pagination from "@/Components/Pagination.vue";
 import { Head, Link } from "@inertiajs/vue3";
 import { ref, onMounted, defineProps } from "vue";
 
